@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тайна Туманного Города</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Georgia, serif; background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); min-height: 100vh; color: #e8e8e8; overflow: hidden; }
+        .book-container { width: 100%; height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px; position: relative; }
+        .cover { display: flex; flex-direction: column; align-items: center; text-align: center; animation: fadeIn 1s ease; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .cover h1 { font-size: clamp(2rem, 8vw, 4rem); color: #f5c542; text-shadow: 0 0 30px rgba(245, 197, 66, 0.5); margin-bottom: 10px; letter-spacing: 3px; }
+        .cover h2 { font-size: clamp(1.2rem, 4vw, 2rem); color: #a0a0a0; font-weight: normal; margin-bottom: 30px; }
+        .cover .subtitle { font-size: clamp(1rem, 3vw, 1.5rem); color: #888; font-style: italic; max-width: 600px; line-height: 1.6; }
+        .cover .author { margin-top: 40px; font-size: 1.2rem; color: #666; }
+        .start-btn { margin-top: 40px; padding: 15px 40px; font-size: 1.2rem; background: linear-gradient(135deg, #f5c542, #e09f3e); border: none; border-radius: 30px; cursor: pointer; color: #1a1a2e; font-weight: bold; transition: transform 0.3s, box-shadow 0.3s; }
+        .start-btn:hover { transform: scale(1.05); box-shadow: 0 0 30px rgba(245, 197, 66, 0.6); }
+        .page { display: none; width: 100%; max-width: 800px; padding: 40px 30px; background: rgba(255, 255, 255, 0.05); border-radius: 10px; backdrop-filter: blur(10px); max-height: 80vh; overflow-y: auto; animation: pageIn 0.5s ease; }
+        @keyframes pageIn { from { opacity: 0; transform: rotateY(-10deg); } to { opacity: 1; transform: rotateY(0); } }
+        .page::-webkit-scrollbar { width: 5px; }
+        .page::-webkit-scrollbar-track { background: transparent; }
+        .page::-webkit-scrollbar-thumb { background: #f5c542; border-radius: 5px; }
+        .page h1 { color: #f5c542; margin-bottom: 20px; font-size: 1.8rem; }
+        .page h2 { color: #ccc; margin: 30px 0 15px; font-size: 1.4rem; }
+        .page p { line-height: 1.8; margin-bottom: 15px; font-size: 1.1rem; }
+        .nav-buttons { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); display: flex; gap: 20px; z-index: 100; }
+        .nav-btn { padding: 12px 30px; font-size: 1rem; background: rgba(245, 197, 66, 0.2); border: 2px solid #f5c542; border-radius: 25px; cursor: pointer; color: #f5c542; transition: all 0.3s; }
+        .nav-btn:hover { background: #f5c542; color: #1a1a2e; }
+        .nav-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+        .page-counter { position: fixed; bottom: 80px; left: 50%; transform: translateX(-50%); color: #666; font-size: 0.9rem; }
+        .decorative-line { width: 100px; height: 2px; background: linear-gradient(90deg, transparent, #f5c542, transparent); margin: 20px auto; }
+    </style>
+</head>
+<body>
+    <div class="book-container">
+        <div class="cover" id="cover">
+            <h1>Тайна Туманного Города</h1>
+            <div class="decorative-line"></div>
+            <p class="subtitle">Повесть о том, как четверо друзей нашли то, чего боялись, и обрели то, чего не искали</p>
+            <p class="author">Автор: Самуил</p>
+            <button class="start-btn" onclick="startReading()">Читать книгу</button>
+        </div>
+        <div class="page" id="page1">
+            <h1>ГЛАВА 1</h1>
+            <h2>Общий удар</h2>
+            <p>Вы собрались вместе, чтобы обсудить планы на выходные. Кто-то пил чай, кто-то смотрел в окно, кто-то просто сидел в кресле.</p>
+            <p>Вдруг раздался низкий гул. Он нарастал, словно поезд метро проходил прямо под вами. А потом пол резко дернулся.</p>
+            <p>Землетрясение.</p>
+            <p>Книги посыпались с полок, люстра раскачалась так сильно, что ударилась о потолок, зазвенела разбитая посуда. В углу комнаты побежала трещина по штукатурке. Снаружи послышался жуткий скрежет и грохот — что-то большое рухнуло на соседней улице.</p>
+            <p>Когда толчки стихли, наступила звенящая тишина, нарушаемая только воем сигнализации припаркованных машин.</p>
+            <p>Вы все стоите посреди комнаты, держась друг за друга, и смотрите на разрушения.</p>
+        </div>
+        <div class="page" id="page2">
+            <h1>ГЛАВА 2</h1>
+            <h2>Тишина</h2>
+            <p>Ваша компания собралась в квартире на последнем этаже. Обычный вечер, за окном шумит город.</p>
+            <p>Внезапно вы замечаете, что шум исчез. Не постепенно, а мгновенно. Словно кто-то выключил звук у всего мира.</p>
+            <p>В комнате гаснет свет. Телефоны перестают работать — просто черные экраны.</p>
+            <p>Кто-то подходит к окну и видит странную картину: весь город замер. Машины стоят на перекрестках, люди на тротуарах не двигаются. Как будто время остановилось.</p>
+            <p>Но вы в квартире — можете двигаться, дышать, говорить.</p>
+            <p>А потом кто-то замечает, что на стекле окна с внутренней стороны начинает расти тонкий белый узор инея. Хотя батареи были горячими...</p>
+        </div>
+        <div class="page" id="page3">
+            <h1>ГЛАВА 3</h1>
+            <h2>Голоса снаружи</h2>
+            <p>Вы стоите у окна, наблюдая за замершим городом и странным инеем на стекле. В комнате становится прохладнее.</p>
+            <p>Внезапно тишину разрывает резкий звук — работает уличный громкоговоритель.</p>
+            <p>Голос звучит хрипло, словно динамик поврежден: «Внимание! Внимание! Опасность... заражение... вы должны...»</p>
+            <p>Голос обрывается. Потом снова: «...не доверяйте... они уже...»</p>
+            <p>И снова тишина.</p>
+            <p>Вы переглядываетесь. «Они уже что? Кто — они?» — кто-то нервно смеется.</p>
+            <p>Иней на окне становится гуще. Теперь на нем проступают какие-то узоры — не случайные, а явно складывающиеся в буквы.</p>
+        </div>
+        <div class="page" id="page4">
+            <h1>ГЛАВА 4</h1>
+            <h2>Эхо</h2>
+            <p>Вы смотрите на иней на окне. Буквы складываются в слова: «ЭХО ПРИХОДИТ».</p>
+            <p>— Что такое Эхо? — спрашивает кто-то.</p>
+            <p>Никто не отвечает. Но вы все понимаете, что это не просто узор. Это сообщение.</p>
+            <p>Вдруг раздается тихий смех. Он исходит отовсюду и ниоткуда — словно эхо вашего собственного смеха, но с задержкой в несколько секунд.</p>
+            <p>— Это кто? — голос дрожит.</p>
+            <p>Смех повторяется снова. Теперь он звучит как смех всех четверых — одновременно, но с разной задержкой. Словно эхо отражается от стен невидимого коридора.</p>
+            <p>— Эхо, — говорит кто-то. — Это Эхо.</p>
+            <p>Вы понимаете: то, что происходит — это не землетрясение и не остановка времени. Это что-то другое. Что-то, что связано с вами напрямую.</p>
+        </div>
+        <div class="page" id="page5">
+            <h1>ГЛАВА 5</h1>
+            <h2>Отражение</h2>
+            <p>Вы решаете не ждать. Нужно выйти из квартиры и понять, что происходит.</p>
+            <p>Дверь открывается. За ней — обычный подъезд. Но свет не горит, и на стенах тоже появляется иней.</p>
+            <p>Вы спускаетесь по лестнице. Шаги громко звучат в тишине. На площадке второго этажа кто-то останавливается.</p>
+            <p>— Смотрите, — шепчет кто-то.</p>
+            <p>В зеркале на стене подъезда отражается не ваша компания. Там стоят четверо других людей — ваши двойники. Но они двигаются не синхронно с вами. Они делают что-то другое.</p>
+            <p>Один из них поднимает руку. Ваш двойник в зеркале опускает.</p>
+            <p>— Они живые, — вы понимаете это с ужасом. — Это не отражение.</p>
+            <p>Двойники в зеркале улыбаются. Все четверо — одновременно.</p>
+        </div>
+        <div class="page" id="page6">
+            <h1>ГЛАВА 6</h1>
+            <h2>Выход</h2>
+            <p>Вы выходите на улицу. Город замер, но теперь вы видите больше деталей.</p>
+            <p>Люди стоят на тротуарах с поднятыми головами. Машины остановились посреди дороги. На светофоре горит желтый.</p>
+            <p>И везде — этот странный туман. Он появился ниоткуда и заполнил все пространство между домами.</p>
+            <p>— Это и есть Туманный Город, — говорит кто-то.</p>
+            <p>Вы идете по пустынной улице. Туман становится гуще. Теперь вы видите только друг друга — и больше ничего.</p>
+            <p>Вдруг туман расступается. Перед вами — знакомый дом. Это ваш дом. Или дом одного из вас.</p>
+            <p>Дверь открыта.</p>
+            <p>Внутри темно, но вы слышите голоса. Свои голоса.</p>
+        </div>
+        <div class="page" id="page7">
+            <h1>ГЛАВА 7</h1>
+            <h2>Встреча</h2>
+            <p>Вы входите внутрь. В гостиной сидят четверо — ваши двойники. Они выглядят точно так же, как вы, но их глаза светятся странным светом.</p>
+            <p>— Вы наконец пришли, — говорит один из них. Его голос звучит как ваш собственный.</p>
+            <p>— Кто вы? — спрашиваете вы.</p>
+            <p>— Мы — это вы. Или вы — это мы. Неважно. Мы — Эхо.</p>
+            <p>Двойники встают. Они двигаются плавно, словно тени.</p>
+            <p>— Мы живем в щелях между мирами. В отражениях, в эхе, в тенях. Мы всегда были здесь. Но сейчас время вышло. Мир меняется. И нам нужны вы.</p>
+            <p>— Зачем?</p>
+            <p>— Чтобы стать одним целым. Чтобы перейти.</p>
+        </div>
+        <div class="page" id="page8">
+            <h1>ГЛАВА 8</h1>
+            <h2>Выбор</h2>
+            <p>Вы понимаете, что должны выбрать. Остаться здесь, с Эхо — или попытаться вернуться.</p>
+            <p>— Что будет, если мы останемся? — спрашивает кто-то.</p>
+            <p>— Мы станем частью города. Частью тумана. Нас забудут, но мы будем жить вечно.</p>
+            <p>— А если уйдем?</p>
+            <p>— Вернетесь в свой мир. Но ничего не вспомните. Для вас это будет просто сон.</p>
+            <p>Вы смотрите друг на друга. Четверо друзей, связанные общей судьбой.</p>
+            <p>— А если мы откажемся? — спрашиваете вы.</p>
+            <p>Эхо улыбается.</p>
+            <p>— Тогда город останется здесь навсегда. А вы застрянете между мирами.</p>
+        </div>
+        <div class="page" id="page9">
+            <h1>ГЛАВА 9</h1>
+            <h2>Решение</h2>
+            <p>Вы думаете о своей жизни. О друзьях, о семье, о обычных днях, которые казались такими скучными.</p>
+            <p>Но теперь вы знаете: ничто не бывает скучным. Мир полон тайн.</p>
+            <p>— Мы уходим, — говорите вы.</p>
+            <p>Эхо не возражает. Оно просто кивает.</p>
+            <p>— Хорошо. Но помните: Эхо всегда слышит. Оно будет повторять ваши слова, ваши мысли, ваши страхи.</p>
+            <p>— Мы не боимся.</p>
+            <p>— Это потому, что вы еще не знаете, чего боитесь.</p>
+            <p>Туман начинает рассеиваться. Вы чувствуете, как что-то тянет вас назад.</p>
+        </div>
+        <div class="page" id="page10">
+            <h1>ГЛАВА 10</h1>
+            <h2>Возвращение</h2>
+            <p>Вы открываете глаза. Вы снова в квартире. За окном — шум города, сигнализация машин, голоса прохожих.</p>
+            <p>Обычный вечер. Обычный разговор.</p>
+            <p>Но что-то изменилось. Вы смотрите друг на друга и понимаете: что-то произошло. Что-то важное.</p>
+            <p>— Вы помните? — спрашивает кто-то.</p>
+            <p>— Я помню туман, — говорит другой. — И Эхо.</p>
+            <p>— Это был сон, — говорит третий. Но в его голосе нет уверенности.</p>
+            <p>Вы смотрите в окно. На стекле — обычное отражение. Но на долю секунды вам кажется, что в отражении мелькает что-то еще.</p>
+            <p>Эхо.</p>
+            <p>Оно всегда слышит.</p>
+            <p>Оно всегда повторяет.</p>
+        </div>
+        <div class="nav-buttons" id="nav" style="display: none;">
+            <button class="nav-btn" id="prevBtn" onclick="prevPage()">← Назад</button>
+            <button class="nav-btn" id="nextBtn" onclick="nextPage()">Вперёд →</button>
+        </div>
+        <div class="page-counter" id="counter" style="display: none;"></div>
+    </div>
+    <script>
+        let currentPage = 0;
+        const pages = document.querySelectorAll('.page');
+        function startReading() {
+            document.getElementById('cover').style.display = 'none';
+            document.getElementById('nav').style.display = 'flex';
+            document.getElementById('counter').style.display = 'block';
+            showPage(0);
+        }
+        function showPage(index) {
+            pages.forEach(p => p.style.display = 'none');
+            pages[index].style.display = 'block';
+            currentPage = index;
+            updateNav();
+        }
+        function nextPage() {
+            if (currentPage < pages.length - 1) showPage(currentPage + 1);
+        }
+        function prevPage() {
+            if (currentPage > 0) showPage(currentPage - 1);
+        }
+        function updateNav() {
+            document.getElementById('prevBtn').disabled = currentPage === 0;
+            document.getElementById('nextBtn').disabled = currentPage === pages.length - 1;
+            document.getElementById('counter').textContent = (currentPage + 1) + ' / ' + pages.length;
+        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') nextPage();
+            if (e.key === 'ArrowLeft') prevPage();
+        });
+    </script>
+</body>
+</html>
