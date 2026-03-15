@@ -538,7 +538,7 @@
         function updateNav() {
             document.getElementById('prevBtn').disabled = currentPage === 0;
             document.getElementById('nextBtn').disabled = currentPage === pages.length - 1;
-            document.getElementById('counter').textContent = (currentPage + 1) + ' / ' + pages.length;
+            // counter removed
         }
         document.addEventListener('keydown', (e) => {
             if (e.key === 'ArrowRight') nextPage();
