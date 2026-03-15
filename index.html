@@ -45,7 +45,7 @@
             <button class="start-btn" onclick="startReading()">Читать книгу</button>
         </div>
 
-         class="page" id="page3">
+         <div class="page" id="page3">
             <h1>ГЛАВА 2</h1>
             <h2>Тишина</h2>
             <p>Их компания собралась в квартире на последнем этаже. Обычный вечер, за окном шумит город.</p>
@@ -508,6 +508,14 @@
     </div>
     <script>
         let currentPage = 0;
+        const pages = document.querySelectorAll('.page');
+
+        // Hide all pages on load
+        window.onload = function() {
+            pages.forEach(p => p.style.display = 'none');
+        };
+
+        function startReading() {
         const pages = document.querySelectorAll('.page');
         function startReading() {
             document.getElementById('cover').style.display = 'none';
