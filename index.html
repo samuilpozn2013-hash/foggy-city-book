@@ -5,7 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>🏙️ Тайна Туманного города</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
         body {
             font-family: 'Georgia', serif;
             background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
@@ -13,34 +17,112 @@
             color: #e8e8e8;
             line-height: 1.8;
         }
-        .container { max-width: 600px; margin: 0 auto; padding: 20px; }
-        .page { display: none; min-height: calc(100vh - 40px); padding-bottom: 80px; }
-        .page.active { display: block; }
-        h1 { font-size: 2em; text-align: center; margin: 40px 0 20px; color: #ffd700; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
-        h2 { font-size: 1.5em; text-align: center; margin: 20px 0; color: #87ceeb; }
-        p { font-size: 1.1em; text-align: justify; margin-bottom: 1.5em; padding: 0 15px; }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .page {
+            display: none;
+            min-height: calc(100vh - 40px);
+            padding-bottom: 80px;
+        }
+        .page.active {
+            display: block;
+        }
+        h1 {
+            font-size: 2em;
+            text-align: center;
+            margin: 40px 0 20px;
+            color: #ffd700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        h2 {
+            font-size: 1.5em;
+            text-align: center;
+            margin: 20px 0;
+            color: #87ceeb;
+        }
+        .subtitle {
+            font-size: 1.1em;
+            text-align: center;
+            color: #a0a0a0;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+        p {
+            font-size: 1.1em;
+            text-align: justify;
+            margin-bottom: 1.5em;
+            padding: 0 15px;
+        }
         .nav-buttons {
-            position: fixed; bottom: 0; left: 0; right: 0;
-            display: flex; justify-content: space-between;
-            padding: 15px 20px; background: rgba(0,0,0,0.8); backdrop-filter: blur(10px);
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 20px;
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(10px);
         }
         button {
-            padding: 12px 24px; font-size: 1em; border: none; border-radius: 8px;
-            cursor: pointer; transition: all 0.3s; font-family: inherit;
+            padding: 12px 24px;
+            font-size: 1em;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: inherit;
         }
-        .btn-prev { background: #4a5568; color: white; }
-        .btn-next { background: #ffd700; color: #1a1a2e; }
-        button:hover { transform: scale(1.05); }
-        button:disabled { opacity: 0.3; cursor: not-allowed; transform: none; }
-        .cover { text-align: center; padding-top: 60px; }
-        .cover h1 { font-size: 2.5em; margin-bottom: 20px; }
-        .cover .author { font-size: 1.2em; color: #a0a0a0; margin-top: 40px; }
-        .cover .tagline { font-size: 1.1em; color: #87ceeb; margin-top: 20px; font-style: italic; }
-        .cover .start-btn { margin-top: 60px; background: #ffd700; color: #1a1a2e; padding: 15px 40px; font-size: 1.2em; }
+        .btn-prev {
+            background: #4a5568;
+            color: white;
+        }
+        .btn-next {
+            background: #ffd700;
+            color: #1a1a2e;
+        }
+        button:hover {
+            transform: scale(1.05);
+        }
+        button:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+            transform: none;
+        }
+        .cover {
+            text-align: center;
+            padding-top: 60px;
+        }
+        .cover h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        .cover .author {
+            font-size: 1.2em;
+            color: #a0a0a0;
+            margin-top: 40px;
+        }
+        .cover .tagline {
+            font-size: 1.1em;
+            color: #87ceeb;
+            margin-top: 20px;
+            font-style: italic;
+        }
+        .cover .start-btn {
+            margin-top: 60px;
+            background: #ffd700;
+            color: #1a1a2e;
+            padding: 15px 40px;
+            font-size: 1.2em;
+        }
     </style>
 </head>
 <body>
     <div class="container">
+        <!-- Cover -->
         <div class="page active" id="page-1">
             <div class="cover">
                 <h1>🏙️ Тайна Туманного города</h1>
@@ -49,6 +131,7 @@
                 <button class="start-btn" onclick="goToPage(1)">Читать</button>
             </div>
         </div>
+        <!-- Chapter 1 -->
         <div class="page" id="page-2">
             <h1>Глава 1</h1>
             <h2>Тишина</h2>
@@ -59,6 +142,7 @@
             <p>— Ребята, — позвал он друзей, — посмотрите на это.</p>
             <p>Остальные подошли к окну. Марк, самый скептичный из них, хотел было сказать, что это просто мороз, но слова застряли в горле. Узоры на стекле двигались.</p>
         </div>
+        <!-- Chapter 2 -->
         <div class="page" id="page-3">
             <h1>Глава 2</h1>
             <h2>Голоса снаружи</h2>
@@ -69,6 +153,7 @@
             <p>В ту же секунду иней на их стекле начал складываться в странный символ — круг с тремя пересекающимися линиями, будто кто-то чертил его с обратной стороны стекла изнутри квартиры.</p>
             <p>Самуил решил собирать вещи на всякий случай. Марк спрятался в дальнюю комнату и поклялся не выходить на улицу до конца жизни. Захар собирал припасы. Матфей молчал, наблюдая.</p>
         </div>
+        <!-- Chapter 3 -->
         <div class="page" id="page-4">
             <h1>Глава 3</h1>
             <h2>Второй толчок</h2>
@@ -80,6 +165,7 @@
             <p>— Нужно выбираться отсюда, — сказал Захар.</p>
             <p>— Куда? — спросил Матфей впервые за несколько часов. — Ты видел, что творится на улице?</p>
         </div>
+        <!-- Chapter 4 -->
         <div class="page" id="page-5">
             <h1>Глава 4</h1>
             <h2>Глазок</h2>
@@ -93,11 +179,12 @@
             <p>Звонок повторился. Потом еще раз. И еще.</p>
             <p>— Не открывай, — сказал Матфей.</p>
         </div>
+        <!-- Chapter 5 -->
         <div class="page" id="page-6">
             <h1>Глава 5</h1>
             <h2>Решение</h2>
             <p>Прошла еще одна ночь. Утро наступило странным образом — небо за окном было не серым, не светлым, а каким-то... размытым, словно фотография, потерявшая фокус.</p>
-            <p>Самуил не спал всю ночь. Он сидел у окне и смотрел на город, который медленно исчезал. Дома становились прозрачными, словно их застилал туман, только это был не туман — это была пустота.</p>
+            <p>Самуил не спал всю ночь. Он сидел у окна и смотрел на город, который медленно исчезал. Дома становились прозрачными, словно их застилал туман, только это был не туман — это была пустота.</p>
             <p>— Я знаю, что нужно делать, — сказал он наконец.</p>
             <p>Остальные повернулись к нему.</p>
             <p>— Нужно идти к библиотеке. Там хранятся старые записи. Я видел там что-то про город.</p>
@@ -114,22 +201,36 @@
     <script>
         let currentPage = 0;
         const totalPages = 6;
+
         function goToPage(page) {
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
             currentPage = page;
             document.getElementById('page-' + (page + 1)).classList.add('active');
             updateButtons();
         }
-        function nextPage() { if (currentPage < totalPages - 1) goToPage(currentPage + 1); }
-        function prevPage() { if (currentPage > 0) goToPage(currentPage - 1); }
+
+        function nextPage() {
+            if (currentPage < totalPages - 1) {
+                goToPage(currentPage + 1);
+            }
+        }
+
+        function prevPage() {
+            if (currentPage > 0) {
+                goToPage(currentPage - 1);
+            }
+        }
+
         function updateButtons() {
             document.getElementById('prevBtn').disabled = (currentPage === 0);
             document.getElementById('nextBtn').disabled = (currentPage === totalPages - 1);
         }
+
         document.addEventListener('keydown', function(e) {
             if (e.key === 'ArrowRight') nextPage();
             if (e.key === 'ArrowLeft') prevPage();
         });
+
         updateButtons();
     </script>
 </body>
